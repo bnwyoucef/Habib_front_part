@@ -434,7 +434,7 @@ function App() {
                 </li>
               </ul>
             </div>
-            <div className="col-6 col-md">
+            {/* <div className="col-6 col-md">
               <h5>Social</h5>
               <ul className="list-unstyled text-small ">
                 <li className="text-muted d-flex align-items-center social">
@@ -468,8 +468,8 @@ function App() {
                   </a>
                 </li>
               </ul>
-            </div>
-            <div className="col-6 col-md">
+            </div> */}
+            {/* <div className="col-6 col-md">
               <h5>Localisation</h5>
               <ul className="list-unstyled text-small">
                 <li>
@@ -487,7 +487,7 @@ function App() {
                   </div>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="text-center py-4 mt-4 copyRights">
