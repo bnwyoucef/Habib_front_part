@@ -408,16 +408,16 @@ function App() {
       <footer className="pt-4 pt-md-5 border-top">
         <div className="container">
           <div className="row">
-            <div className="col-12 col-md">
+            <div className="col-sm-12 col-md-4 col-lg-3 d-flex justify-content-center">
               <a href="#">
                 <img
-                  className="img-fluid"
+                  className="img-fluid footer-logo"
                   src={logo}
-                  style={{ width: "auto", height: "200px" }}
+                  style={{ width: "auto", height: "200px", marginTop: "10px" }}
                 />
               </a>
             </div>
-            <div className="col-6 col-md">
+            <div className="col-sm-12 col-md-4 col-lg-3 footer-info">
               <h5>Contacts</h5>
               <ul className="list-unstyled text-small">
                 <li className="text-muted d-flex flex-row phone-contacts">
@@ -434,7 +434,7 @@ function App() {
                 </li>
               </ul>
             </div>
-            {/* <div className="col-6 col-md">
+            <div className="col-sm-12 col-md-4 col-lg-3 footer-info">
               <h5>Social</h5>
               <ul className="list-unstyled text-small ">
                 <li className="text-muted d-flex align-items-center social">
@@ -468,26 +468,26 @@ function App() {
                   </a>
                 </li>
               </ul>
-            </div> */}
-            {/* <div className="col-6 col-md">
+            </div>
+            <div className="col-sm-12 col-md-12 col-lg-3 footer-info">
               <h5>Localisation</h5>
               <ul className="list-unstyled text-small">
                 <li>
-                  <div class="mapouter">
-                    <div class="gmap_canvas">
+                  <div class="mapouter col-sm-12 col-md-auto d-flex justify-content-center">
+                    <div class="gmap_canvas col-sm-12 col-md-6 d-flex justify-content-center">
                       <iframe
                         class="gmap_iframe"
                         frameborder="0"
                         scrolling="no"
                         marginheight="0"
                         marginwidth="0"
-                        src="https://maps.google.com/maps?width=400&amp;height=300&amp;hl=en&amp;q=habib grifa&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                        src="https://maps.google.com/maps?width=400&amp;height=300&amp;hl=en&amp;q=habib grifa&amp;t=&amp;z=8&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                       ></iframe>
                     </div>
                   </div>
                 </li>
               </ul>
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="text-center py-4 mt-4 copyRights">

@@ -15,11 +15,12 @@ footer {
 h5 {
   color: #afa3a2;
   font-weight: bold;
+  margin-top: 10px;
 }
 .phone-contacts {
   color: #afa3a2;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 2px; 
 }
 .phone-contacts p {
@@ -47,4 +48,74 @@ h5 {
 .gmap_iframe {
   width:400px!important;
   height:300px!important;
+}
+
+@media (max-width: 350px) {
+  .footer-logo {
+    width:auto!important;
+    height:100px;
+  }
+  .mapouter{
+    position:relative;
+    text-align:right;
+    width:200px;
+    height:200px;
+  }
+  .gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    width:200px;
+    height:200px;
+  }
+  .gmap_iframe {
+    width:200px!important;
+    height:200px!important;
+  }
+
+}
+
+@media (min-width: 350px) and (max-width: 600px) {
+  .footer-info {
+    padding-left: 30px;  
+  }
+  .footer-logo {
+    width:auto!important;
+    height:250px!important;
+  }
+  .mapouter{
+    position:relative;
+    text-align:right;
+    width:280px;
+    height:280px;
+  }
+  .gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    width:280px;
+    height:280px;
+  }
+  .gmap_iframe {
+    width:280px!important;
+    height:280px!important;
+  }
+  
+}
+@media (min-width: 600px) {
+  .mapouter{
+    position:relative;
+    text-align:right;
+    width:500px;
+    height:300px;
+  }
+  .gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    width:500px;
+    height:300px;
+  }
+  .gmap_iframe {
+    width:500px!important;
+    height:300px!important;
+  }
+
 }
