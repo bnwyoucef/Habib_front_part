@@ -21,7 +21,7 @@ export default function Products() {
             { image1: image7, image2: image8, image3: image9 },
           ].map((product) => (
             <div className="row justify-content-md-center">
-              <div className="p-2 col-xs-12 col-sm-6 col-lg-4">
+              <div className="p-2 col-xs-12 col-sm-4 col-lg-4">
                 <div className="card">
                   <img
                     src={product.image1}
@@ -38,7 +38,7 @@ export default function Products() {
                   </div>
                 </div>
               </div>
-              <div className="p-2 col-xs-12 col-sm-6 col-lg-4">
+              <div className="p-2 col-xs-12 col-sm-4 col-lg-4">
                 <div className="card">
                   <img
                     src={product.image2}
@@ -55,7 +55,7 @@ export default function Products() {
                   </div>
                 </div>
               </div>
-              <div className="p-2 col-xs-12 col-sm-6 col-lg-4">
+              <div className="p-2 col-xs-12 col-sm-4 col-lg-4">
                 <div className="card">
                   <img
                     src={product.image3}

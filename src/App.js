@@ -4,6 +4,8 @@ import About from "./layouts/About";
 import Products from "./layouts/Products";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Product from "./layouts/Product";
+import "./style/product.css";
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Route path="/" element={<Home key={Date.now()} />} />
         <Route path="/produits" element={<Products key={Date.now()} />} />
         <Route path="/about" element={<About />} />
+        <Route path="/produit/:id" element={<Product />} />
       </Routes>
     </>
   );

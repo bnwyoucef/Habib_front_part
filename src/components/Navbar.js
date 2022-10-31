@@ -31,23 +31,17 @@ function Navbar() {
               style={{ width: "100%" }}
             >
               <li className="nav-item active">
-                <Link to="/" className="nav-link p-3">
+                <Link reloadDocument to="/" className="nav-link p-3">
                   Home
                 </Link>
-                {/* <a className="nav-link p-3" href="#">
-                  Home <span className="sr-only">(current)</span>
-                </a> */}
               </li>
               <li className="nav-item">
-                <Link to="/produits" className="nav-link p-3">
+                <Link to="/produits" reloadDocument className="nav-link p-3">
                   Produits
                 </Link>
-                {/* <a className="nav-link p-3" href="#about-us">
-                  Products
-                </a> */}
               </li>
               <li className="nav-item">
-                <Link to="about" className="nav-link p-3">
+                <Link to="about" reloadDocument className="nav-link p-3">
                   About us
                 </Link>
               </li>
