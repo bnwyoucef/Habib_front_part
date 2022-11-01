@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
+import "../style/product.css";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
