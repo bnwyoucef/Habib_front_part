@@ -1,3 +1,19 @@
+
+:root {
+  --main-color: #e63933;
+  --second-color: #f4f1f0;
+  --third-color: #0a0a0a;
+  --forth-color: #afa3a2;
+  --last-color: #afa3a2;
+}
+
+body {
+  background: #f4f1f0;
+}
+.navbar a:hover {
+  color: var(--main-color);
+}
+
 ul li {
   margin: 0px 30px;
 }
@@ -75,6 +91,10 @@ h5 {
 }
 .products-container {
   width: 100%;
+}
+
+.card-title {
+  color: #e1221c;
 }
 
 @media (min-width: 350px) and (max-width: 600px) {

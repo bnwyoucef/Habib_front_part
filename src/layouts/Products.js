@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import baseUrl from "../Api/BaseUrl";
 import Footer from "../components/Footer";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   selectAllProducts,
   fetchProducts,
@@ -22,20 +23,28 @@ export default function Products() {
         <div className="container products-container">
           <div className="row justify-content-md-center">
             {productsList?.map((product) => (
-              <div className="p-2 col-xs-12 col-sm-4 col-lg-4">
-                <div className="card">
-                  <img
-                    src={`${baseUrl}product/image/${
-                      product.images.split(",")[0]
-                    }`}
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{product.name}</h5>
-                    <p className="card-text">{product.description}</p>
+              <div className="p-2 col-xs-12 col-sm-4 col-lg-4" key={product.id}>
+                <Link
+                  to={`/produit/${product.id}`}
+                  reloadDocument
+                  className="nav-link p-3"
+                >
+                  <div className="card">
+                    <img
+                      src={`${baseUrl}product/image/${
+                        product.images.split(",")[0]
+                      }`}
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title card-title-price">
+                        {product.price}DA
+                      </h5>
+                      <p className="card-text">{product.description}</p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
