@@ -1,10 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import "../style/order.css";
 
 export default function Order() {
+  const { id } = useParams();
   return (
     <div>
+      <h1 style={{ textAlign: "center" }}>{id}</h1>
       <div className="d-flex justify-content-center order-container">
         <form className="order-form">
           <div className="form-group my-3">

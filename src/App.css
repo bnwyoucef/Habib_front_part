@@ -66,6 +66,13 @@ h5 {
   height:300px!important;
 }
 
+img {
+  object-fit: cover;
+}
+.card {
+  box-shadow: 0 1rem 2rem #f30e0e3d;
+}
+
 @media (max-width: 350px) {
   .footer-logo {
     width:auto!important;
@@ -93,9 +100,7 @@ h5 {
   width: 100%;
 }
 
-.card-title {
-  color: #e1221c;
-}
+
 
 @media (min-width: 350px) and (max-width: 600px) {
   .footer-info {

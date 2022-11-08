@@ -26,12 +26,7 @@ width: 100%;
   padding: 10px;
 }
 
-.navbar-container{
-  display: flex;
-  justify-content: space-between;
-  margin: 6px 18px;
-  position: relative;
-}
+
 .marquee-text{
   font-size: 29px;
   font-weight: 600;
@@ -395,7 +390,14 @@ padding: 30px 65px;
   width: 400px;
   margin: auto;
 }
-
+.card-img-top {
+  object-fit: cover;
+}
+.img-liked {
+  width: 250;
+  height: 250px;
+  object-fit: cover;
+}
 .product-detail-container{
   display: flex;
  gap: 40px;

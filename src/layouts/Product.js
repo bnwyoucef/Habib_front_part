@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import "../style/product.css";
 import baseUrl from "../Api/BaseUrl";
@@ -13,9 +13,8 @@ export default function Product({ product, products }) {
   let { id } = useParams();
 
   const dispatch = useDispatch();
-  const currentProduct = useSelector(selectAllProducts)?.find(
-    (prod) => prod.id == id
-  );
+  const allProducts = useSelector(selectAllProducts);
+  const currentProduct = allProducts?.find((prod) => prod.id == id);
   const productsStatus = useSelector((state) => state.products.status);
 
   useEffect(() => {
@@ -87,14 +86,11 @@ export default function Product({ product, products }) {
           <p className="price">{currentProduct?.price}DA</p>
           <div className="quantity"></div>
           <div className="buttons">
-            <button type="button" className="add-to-cart">
-              Add to Cart
-            </button>
-            {/* onClick={() => onAdd(product, qty)} */}
-            <button type="button" className="buy-now">
-              Buy Now
-            </button>{" "}
-            {/* onClick={handleBuyNow} */}
+            <Link to={`/command/${currentProduct?.id}`}>
+              <button type="button" className="buy-now">
+                Buy Now
+              </button>{" "}
+            </Link>
           </div>
         </div>
       </div>
@@ -103,16 +99,18 @@ export default function Product({ product, products }) {
         <h2>You may also like</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {[1, 2, 3, 4, 5, 6].map((item, i) => (
-              <div className="p-2" key={i}>
+            {allProducts?.slice(0, 11).map((product) => (
+              <div className="p-2" key={product.id}>
                 <div className="card">
                   <img
-                    src="https://picsum.photos/202"
-                    className="card-img-top"
-                    alt="..."
+                    src={`${baseUrl}product/image/${
+                      product.images?.split(",")[0]
+                    }`}
+                    className="card-img-top img-liked"
+                    alt={product.name}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
+                    <h5 className="card-title">{product.name}</h5>
                   </div>
                 </div>
               </div>
