@@ -14,8 +14,15 @@ export default function Product({ product, products }) {
 
   const dispatch = useDispatch();
   const allProducts = useSelector(selectAllProducts);
-  const currentProduct = allProducts?.find((prod) => prod.id == id);
+  const currentProduct = allProducts?.find(
+    (prod) => parseInt(prod.id) === parseInt(id)
+  );
   const productsStatus = useSelector((state) => state.products.status);
+  const [bigImage, setBigImage] = useState("");
+
+  useEffect(() => {
+    setBigImage(currentProduct?.images.split(",")[0]);
+  }, [currentProduct]);
 
   useEffect(() => {
     if (productsStatus === "idle") dispatch(fetchProducts());
@@ -36,9 +43,7 @@ export default function Product({ product, products }) {
         <div>
           <div className="image-container">
             <img
-              src={`${baseUrl}product/image/${
-                currentProduct?.images.split(",")[0]
-              }`}
+              src={`${baseUrl}product/image/${bigImage}`}
               className="product-detail-image"
             />
           </div>
@@ -57,6 +62,7 @@ export default function Product({ product, products }) {
                           : "small-image"
                       }
                       onMouseEnter={() => setIndex(i)}
+                      onClick={() => setBigImage(image)}
                     />
                   ))
               : currentProduct?.images
