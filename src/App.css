@@ -7,9 +7,6 @@
   --last-color: #afa3a2;
 }
 
-body {
-  background: #f4f1f0;
-}
 .navbar a:hover {
   color: var(--main-color);
 }
@@ -70,7 +67,7 @@ img {
   object-fit: cover;
 }
 .card {
-  box-shadow: 0 1rem 2rem #f30e0e3d;
+  box-shadow: 0 1rem 2rem #f750503d;
 }
 
 @media (max-width: 350px) {

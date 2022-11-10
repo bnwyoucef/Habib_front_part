@@ -9,7 +9,9 @@ import {
   fetchProducts,
 } from "../features/products/ProductsSlice";
 
-export default function Product({ product, products }) {
+import { saveImage } from "../features/orderImage/orderImageSlice";
+
+export default function Product() {
   let { id } = useParams();
 
   const dispatch = useDispatch();
@@ -29,12 +31,6 @@ export default function Product({ product, products }) {
   }, [dispatch, productsStatus]);
 
   const [index, setIndex] = useState(0);
-  //const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
-
-  const handleBuyNow = () => {
-    // onAdd(product, qty);
-    // setShowCart(true);
-  };
 
   return (
     <div>
@@ -90,9 +86,11 @@ export default function Product({ product, products }) {
           <p>{currentProduct?.sizes}</p>
           <h4>Prix: </h4>
           <p className="price">{currentProduct?.price}DA</p>
-          <div className="quantity"></div>
           <div className="buttons">
-            <Link to={`/command/${currentProduct?.id}`}>
+            <Link
+              to={`/command/${currentProduct?.id}`}
+              onClick={() => dispatch(saveImage(bigImage))}
+            >
               <button type="button" className="buy-now">
                 Buy Now
               </button>{" "}
