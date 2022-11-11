@@ -9,8 +9,6 @@ import {
   fetchProducts,
 } from "../features/products/ProductsSlice";
 
-import { saveImage } from "../features/orderImage/orderImageSlice";
-
 export default function Product() {
   let { id } = useParams();
 
@@ -31,10 +29,12 @@ export default function Product() {
   }, [dispatch, productsStatus]);
 
   const [index, setIndex] = useState(0);
+  function handleBuyNow() {
+    localStorage.setItem("orderImageName", JSON.stringify(bigImage));
+  }
 
   return (
     <div>
-      <h1>product id: {currentProduct?.name}</h1>
       <div className="product-detail-container d-flex justify-content-center">
         <div>
           <div className="image-container">
@@ -87,10 +87,7 @@ export default function Product() {
           <h4>Prix: </h4>
           <p className="price">{currentProduct?.price}DA</p>
           <div className="buttons">
-            <Link
-              to={`/command/${currentProduct?.id}`}
-              onClick={() => dispatch(saveImage(bigImage))}
-            >
+            <Link to={`/command/${currentProduct?.id}`} onClick={handleBuyNow}>
               <button type="button" className="buy-now">
                 Buy Now
               </button>{" "}

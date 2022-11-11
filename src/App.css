@@ -69,6 +69,23 @@ img {
 .card {
   box-shadow: 0 1rem 2rem #f750503d;
 }
+.thanks-container {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.thanks-container .thanks-content {
+  background-color: #afa3a2;
+  margin: .5rem;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+
 
 @media (max-width: 350px) {
   .footer-logo {

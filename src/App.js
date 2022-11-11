@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Product from "./layouts/Product";
 import Order from "./layouts/Order";
+import Thanks from "./layouts/Thanks";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/produit/:id" element={<Product />} />
         <Route path="/command/:id" element={<Order />} />
+        <Route path="/command/merci" element={<Thanks />} />
       </Routes>
     </>
   );
