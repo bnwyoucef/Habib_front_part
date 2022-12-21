@@ -10,15 +10,21 @@ import Loading from "../components/Loading";
 export default function Order() {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [clientName, setClientName] = useState("");
   const [clientPhone, setClientPhone] = useState("");
-  const [clientWilaya, setClientWilaya] = useState("");
+  const [clientWilaya, setClientWilaya] = useState(wilayaList[0].name);
   const [productSize, setProductSize] = useState("");
   const [image, setImage] = useState(""); // the payement image prove
   const [currentProduct, setCurrentProduct] = useState({});
+  const [errorMsg, setErrorMsg] = useState("");
+
   const productImageName = localStorage.getItem("orderImageName")
     ? JSON.parse(localStorage.getItem("orderImageName"))
+    : "";
+  const productOrdered = localStorage.getItem("orderProduct")
+    ? JSON.parse(localStorage.getItem("orderProduct"))
     : "";
 
   useEffect(() => {
@@ -33,6 +39,10 @@ export default function Order() {
     getProductById(id);
   }, []);
 
+  useEffect(() => {
+    setProductSize(currentProduct?.sizes?.split(",")[0]);
+  }, [currentProduct]);
+
   async function submitOrder(event) {
     setLoading(true);
     event.preventDefault();
@@ -40,24 +50,25 @@ export default function Order() {
     formData.append("clientName", clientName);
     formData.append("clientPhone", clientPhone);
     formData.append("clientWilaya", clientWilaya);
+    formData.append("productName", productOrdered.name);
+    formData.append("productDescription", productOrdered.description);
     formData.append("productSize", productSize);
     formData.append("productImageName", productImageName);
     formData.append("productQuantity", "1");
     formData.append("productId", id);
     formData.append("image", image[0]);
     try {
-      setTimeout(async () => {
-        await axios
-          .post("order/create-order", formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          })
-          .then((data) => {
-            setLoading(false);
-            navigate("/command/merci");
-          });
-      }, 5000);
+      await axios
+        .post("order/create-order", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then(() => {
+          setLoading(false);
+          navigate("/command/merci");
+        });
     } catch (error) {
-      return error.message;
+      setLoading(false);
+      setErrorMsg("please enter all the information");
     }
   }
 
@@ -66,23 +77,45 @@ export default function Order() {
       {loading && <Loading />}
       {!loading && (
         <div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <img
               src={`${baseUrl}product/image/${productImageName}`}
               style={{
                 width: "300px",
                 height: "300px",
-                objectFit: "contain",
+                objectFit: "cover",
+                borderRadius: "2rem",
+                border: "1px solid rgba(0, 0,0,.7)",
+                marginTop: "2rem",
               }}
             />
           </div>
+          {!loading && (
+            <p
+              style={{
+                textAlign: "center",
+                color: "red",
+                margin: "0",
+                marginTop: "2rem",
+              }}
+            >
+              {errorMsg}
+            </p>
+          )}
           <div className="d-flex justify-content-center order-container">
             <form className="order-form" onSubmit={submitOrder}>
               <div className="form-group my-3">
                 <label htmlFor="exampleInputEmail1">Nom et prénom</label>
                 <input
+                  autoFocus
+                  required
                   type="text"
-                  className="form-control"
+                  className="form-control inputBox"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="entrez votre nom"
@@ -93,8 +126,9 @@ export default function Order() {
               <div className="form-group my-3">
                 <label htmlFor="exampleInputEmail1">Numéro de téléphone</label>
                 <input
+                  required
                   type="text"
-                  className="form-control"
+                  className="form-control inputBox"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="téléphone"
@@ -105,7 +139,8 @@ export default function Order() {
               <div className="form-group my-3">
                 <label htmlFor="exampleFormControlSelect1">Wilaya</label>
                 <select
-                  className="form-control"
+                  required
+                  className="form-control inputBox"
                   id="exampleFormControlSelect1"
                   value={clientWilaya}
                   onChange={(e) => setClientWilaya(e.target.value)}
@@ -118,7 +153,8 @@ export default function Order() {
               <div className="form-group my-3">
                 <label htmlFor="exampleInputEmail1">Taille</label>
                 <select
-                  className="form-control"
+                  required
+                  className="form-control inputBox"
                   id="exampleFormControlSelect1"
                   value={productSize}
                   onChange={(e) => setProductSize(e.target.value)}
@@ -130,17 +166,15 @@ export default function Order() {
               </div>
               <div className="form-group my-3">
                 <input
+                  required
                   type="file"
-                  className="form-control-file"
+                  className="form-control-file inputBox"
                   id="exampleFormControlFile1"
                   onChange={(e) => setImage(e.target.files)}
                 />
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-primary confirm-order-btn"
-              >
+              <button type="submit" className="btn confirm-order-btn">
                 confirmer
               </button>
             </form>

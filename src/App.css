@@ -6,7 +6,9 @@
   --forth-color: #afa3a2;
   --last-color: #afa3a2;
 }
-
+body{
+  overflow-x: hidden;
+}
 .navbar a:hover {
   color: var(--main-color);
 }
